@@ -11,8 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class DepartmentsComponent implements OnInit {
 
-  departments: Department[] = [];
-  $departments: Observable<Department[]>;
+  departments$: Observable<Department[]>;
   
   constructor(
     private departmentsService: DepartmentsService,
@@ -23,7 +22,7 @@ export class DepartmentsComponent implements OnInit {
     // this.departmentsService.getDeparments().subscribe(departments => {
     //   this.departments = departments;
     // });
-    this.$departments = this.departmentsService.getDeparments();
+    this.departments$ = this.departmentsService.getDeparments();
   }
 
   goToDepartment(departmentId: string): void {
