@@ -1,5 +1,5 @@
 export interface Employee {
-    id: string;
+    id?: string;
     departmentId: string;
     name: string;
     payRate: number;
@@ -10,5 +10,4 @@ export interface Employee {
     friday: number;
     saturday: number;
     sunday: number;
-
 }
