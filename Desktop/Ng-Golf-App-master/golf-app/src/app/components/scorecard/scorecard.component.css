@@ -1,0 +1,48 @@
+.course-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: calc(100% - 64px);
+}
+
+.hole-card {
+    max-width: 200px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+  
+mat-card-header {
+    text-align: center;
+}
+
+mat-card-title {
+    padding-bottom: 8px;
+}
+
+.player-box {
+    width: 100%;
+    padding: 5px, 10px;
+    text-align: center;
+}
+
+.score-input {
+    width: 20%;
+    margin: 5px;
+}
+
+.totals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  

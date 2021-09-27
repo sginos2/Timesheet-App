@@ -1,0 +1,29 @@
+<div class='course-info'>
+  <h2>{{currentCourseName}}</h2>
+  <p>Total Yards: {{totalYards}}</p>
+  <p>Total Par: {{totalPar}}</p>
+</div>
+<div class="main-container">
+  <mat-card class="hole-card" *ngFor="let hole of holesInfo">
+    <mat-card-header>
+      <mat-card-title>Hole {{hole.hole}}</mat-card-title>
+      <mat-card-subtitle>Par: {{hole.teeBoxes[1].par}}</mat-card-subtitle>
+      <mat-card-subtitle>Yardage: {{hole.teeBoxes[1].yards}}</mat-card-subtitle>
+      <mat-card-subtitle>Handicap: {{hole.teeBoxes[1].hcp}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngFor='let player of currentPlayers' class='player-box'>
+        <mat-label>{{player.name}}</mat-label>
+        <input type="number" [(ngModel)]='player.scores[hole.hole - 1]' id='{{player.id}}' class='score-input'>
+        <button mat-button color="primary" class='save-button' (click)='keepScore(player.id, player.scores[hole.hole - 1])'>Save</button>
+    </mat-card-content>
+  </mat-card>
+  <div class='totals'>
+    <mat-card class='hole-card'>
+      <mat-card-title>Total Scores</mat-card-title>
+      <mat-card-content *ngFor='let player of currentPlayers'>
+        {{player.name}}: {{player.totalScore}} / {{totalPar}}
+      </mat-card-content>
+    </mat-card>
+    <button mat-raised-button color="primary" (click)="getFinalScores()">Finish Game</button>
+  </div>
+</div>

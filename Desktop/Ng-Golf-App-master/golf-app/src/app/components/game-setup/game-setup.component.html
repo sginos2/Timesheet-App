@@ -1,0 +1,34 @@
+<div class="main-container">
+    <h1>Welcome to Golf Scorecard!</h1>
+    <div>
+        <mat-form-field>
+            <mat-label >Select a Course</mat-label>
+            <mat-select required [(ngModel)]="selectedCourse">
+                <mat-option *ngFor="let course of courseData" [value]="course.id">{{course.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Select a Teebox</mat-label>
+            <mat-select required [(ngModel)]="selectedTeeBox" (click)="getCourseInfo(selectedCourse)">
+                <mat-option *ngFor="let type of teeBoxData" [value]="type.teeType">{{type.teeType}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput [formControl]="playerNameFC" type="text" placeholder="Add Players (Up to 4)">
+            <mat-error *ngIf="playerNameFC.hasError('duplicate')">Duplicate Name</mat-error>
+        </mat-form-field>
+        <button mat-mini-fab color="primary" (click)="addPlayer()" [disabled]="playerNameFC.invalid">
+            <mat-icon>add</mat-icon>
+        </button>
+        <ol>Players:
+            <li *ngFor="let player of players">{{player.name}}</li>
+        </ol>
+    </div>
+    <div>
+        <button mat-raised-button color="primary" (click)="startGame()">Start Game</button>
+    </div>
+</div>
